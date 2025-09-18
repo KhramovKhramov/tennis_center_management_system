@@ -1,3 +1,5 @@
+"""Общие для приложения исключения."""
+
 from fastapi import status
 from fastapi.responses import JSONResponse
 
