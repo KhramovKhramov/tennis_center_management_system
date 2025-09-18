@@ -26,3 +26,7 @@ logs: set-container
 	docker compose logs --tail=$(TAIL) -f $(c)
 exec: set-container
 	docker compose exec $(c) /bin/bash
+autogenerate: set-container
+	docker compose exec $(c) /bin/bash -c 'alembic revision --autogenerate -m $(m)'
+upgrade: set-container
+	docker compose exec $(c) /bin/bash -c 'alembic upgrade head'
