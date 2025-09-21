@@ -66,8 +66,6 @@ async def test_session(test_engine):
 
     async with test_async_session() as session:
         yield session
-        # Откатываем транзакцию
-        await session.rollback()
 
     # Удаляем все таблицы после теста
     async with test_engine.begin() as conn:
