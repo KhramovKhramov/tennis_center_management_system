@@ -30,3 +30,5 @@ autogenerate: set-container
 	docker compose exec $(c) /bin/bash -c 'alembic revision --autogenerate -m $(m)'
 upgrade: set-container
 	docker compose exec $(c) /bin/bash -c 'alembic upgrade head'
+tests: set-container
+	docker compose exec $(c) /bin/bash -c 'pytest -vvs'

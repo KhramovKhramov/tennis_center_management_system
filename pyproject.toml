@@ -12,7 +12,9 @@ dependencies = [
     "pre-commit~=4.3.0",
     "alembic~=1.16.5",
     "phonenumbers~=9.0.14",
-    "email-validator>=2.3.0",
+    "email-validator~=2.3.0",
+    "httpx>=0.28.1",
+    "pytest-asyncio~=1.2.0",
 ]
 
 # конфиги RUFF
