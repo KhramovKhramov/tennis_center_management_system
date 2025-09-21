@@ -1,4 +1,4 @@
-from src.api.user.schemas import (
+from src.api.v1.user.schemas import (
     UserCreateSchema,
     UserResponseSchema,
     UserUpdateSchema,
