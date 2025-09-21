@@ -2,8 +2,8 @@ from typing import Annotated
 
 from fastapi import Depends
 
-from src.api.user.repository import UserRepository
-from src.api.user.service import UserService
+from src.api.v1.user.repository import UserRepository
+from src.api.v1.user.service import UserService
 from src.common.dependencies import SessionDep
 from src.models import User
 

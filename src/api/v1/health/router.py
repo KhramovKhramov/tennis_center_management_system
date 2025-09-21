@@ -1,7 +1,7 @@
 from fastapi import APIRouter, status
 from sqlalchemy import text
 
-from src.api.health.schemas import HealthResponseSchema
+from src.api.v1.health.schemas import HealthResponseSchema
 from src.common.dependencies import SessionDep
 
 router = APIRouter(prefix='/health', tags=['health'])

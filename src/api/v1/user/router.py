@@ -1,7 +1,7 @@
 from fastapi import APIRouter, status
 
-from src.api.user.dependencies import UserServiceDep
-from src.api.user.schemas import (
+from src.api.v1.user.dependencies import UserServiceDep
+from src.api.v1.user.schemas import (
     UserCreateSchema,
     UserResponseSchema,
     UserUpdateSchema,
