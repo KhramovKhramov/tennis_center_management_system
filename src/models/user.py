@@ -1,9 +1,10 @@
 from datetime import date, datetime
 
 from sqlalchemy import Boolean, Date, DateTime, Enum, String, false, true
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql.functions import now
 
+from src import models
 from src.common.models import Base
 from src.models.enums import GenderTypes
 
@@ -49,4 +50,9 @@ class User(Base):
         DateTime(timezone=True),
         server_default=now(),
         comment='Дата регистрации',
+    )
+
+    # Роли
+    administrator: Mapped['models.administrator.Administrator'] = relationship(
+        back_populates='user', uselist=False
     )
