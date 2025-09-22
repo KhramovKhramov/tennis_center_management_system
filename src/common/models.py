@@ -1,4 +1,6 @@
-from sqlalchemy import MetaData
+from datetime import date
+
+from sqlalchemy import Date, MetaData
 from sqlalchemy.ext.asyncio import AsyncAttrs
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
@@ -37,3 +39,17 @@ class Base(AsyncAttrs, DeclarativeBase):
         sattrs = ', '.join('{}={!r}'.format(*x) for x in attrs)
 
         return fmt.format(package, class_, sattrs)
+
+
+class DatesRangeMixin:
+    """
+    Миксин, добавляет к моделям ролей поля с датами
+    начала и окончания действия роли.
+    """
+
+    date_from: Mapped[date] = mapped_column(
+        Date(), comment='Дата начала действия роли'
+    )
+    date_to: Mapped[date | None] = mapped_column(
+        Date(), comment='Дата окончания действия роли'
+    )
