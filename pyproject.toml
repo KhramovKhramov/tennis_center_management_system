@@ -1,0 +1,51 @@
+[project]
+name = "tcms_backend"
+version = "0.0.1"
+description = "Tennis center management system"
+
+# Зависимости
+dependencies = [
+    "pip-tools~=7.5.1",
+    "Django~=5.2.7",
+    "djangorestframework~=3.16.1",
+    "drf-spectacular~=0.28.0",
+    "djangorestframework-simplejwt~=5.5.1",
+    "django-filter~=25.2",
+    "psycopg2-binary~=2.9.11",
+    "pytest~=8.4.2",
+    "pytest-django~=4.11.1",
+    "factory-boy~=3.3.3",
+]
+
+# конфиги RUFF
+[tool.ruff]
+line-length = 79
+indent-width = 4
+show-fixes = true
+src = ["app"]
+
+extend-exclude =[
+    "migrations",
+    "settings.py",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "B",    # flake8-bugbear
+    "I",    # isort
+    "ICN",  # flake8-import-conventions
+    "PGH",  # pygrep-hooks
+    "PIE",  # flake8-pie
+    "PT",   # flake8-pytest-style
+    "RET",  # flake8-return
+    "T20",  # flake8-print
+    "UP",   # pyupgrade
+    "YTT",  # flake8-2020
+]
+
+[tool.ruff.format]
+quote-style = "single"
+skip-magic-trailing-comma = false
