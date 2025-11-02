@@ -66,6 +66,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Tennis Center Management System',
+    'DESCRIPTION': 'Swagger UI Schema OpenAPI for Tennis Center Management System',
+    'VERSION': os.getenv('VERSION'),
+    "SERVE_INCLUDE_SCHEMA": False, # исключить эндпоинт /schema
+    "COMPONENT_SPLIT_REQUEST": True,
+    "SWAGGER_UI_SETTINGS": {
+        'docExpansion': 'none',
+    },
+}
+
+SCHEMA_URL = os.getenv('SCHEMA_URL')
+SWAGGER_URL = os.getenv('SWAGGER_URL')
+REDOC_URL = os.getenv('REDOC_URL')
+
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
