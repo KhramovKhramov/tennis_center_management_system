@@ -1,7 +1,9 @@
 import pytest
 from apps.users.models import User
+from django.conf import settings
 from rest_framework import status
 
+from tests.factories import UserFactory
 from tests.helpers import (
     get_create_user_request_data_all_fields,
     get_create_user_request_data_only_required_fields,
@@ -79,7 +81,20 @@ def test_users_list(unauthorized_client, users_list_url, users):
     response = unauthorized_client.get(users_list_url)
     assert response.status_code == status.HTTP_200_OK
 
-    assert response.data[0] == serialize_user(users[-1])
+    assert response.data['results'][0] == serialize_user(users[-1])
+
+
+@pytest.mark.django_db
+def test_users_list_pagination(unauthorized_client, users_list_url):
+    """Тест пагинации в списке пользователей."""
+
+    UserFactory.create_batch(30)
+
+    response = unauthorized_client.get(users_list_url)
+    assert response.status_code == status.HTTP_200_OK
+
+    page_size = settings.REST_FRAMEWORK['PAGE_SIZE']
+    assert len(response.data['results']) == page_size
 
 
 @pytest.mark.django_db
@@ -94,8 +109,9 @@ def test_users_list_max_queries(
     в списке пользователей.
     """
 
-    # 1:
+    # 2:
     # - основной запрос
-    with django_assert_max_num_queries(1):
+    # - пагинация
+    with django_assert_max_num_queries(2):
         response = unauthorized_client.get(users_list_url)
         assert response.status_code == status.HTTP_200_OK
