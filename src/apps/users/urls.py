@@ -1,4 +1,4 @@
-from apps.user.api.views import UserViewSet
+from apps.users.api.views import UserViewSet
 from rest_framework import routers
 
 router = routers.SimpleRouter()

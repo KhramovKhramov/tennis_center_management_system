@@ -1,8 +1,8 @@
 import pytest
-from apps.user.models import User
+from apps.users.models import User
 from rest_framework import status
 
-from tests.helpers.user.user import (
+from tests.helpers import (
     get_create_user_request_data_all_fields,
     get_create_user_request_data_only_required_fields,
     get_update_user_request_data,

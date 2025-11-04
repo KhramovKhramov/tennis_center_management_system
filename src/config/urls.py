@@ -10,7 +10,7 @@ from drf_spectacular.views import (
 )
 
 api_urlpatterns = [
-    path('users/', include('apps.user.urls'), name='users'),
+    path('users/', include('apps.users.urls'), name='users'),
     path(settings.SCHEMA_URL, SpectacularAPIView.as_view(), name='schema'),
     path(
         settings.SWAGGER_URL,
