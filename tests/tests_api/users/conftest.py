@@ -1,5 +1,5 @@
 import pytest
-from apps.user.models import User
+from apps.users.models import User
 
 from tests.factories import UserFactory
 from tests.utils import get_api_url

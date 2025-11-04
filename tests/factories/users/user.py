@@ -1,6 +1,6 @@
 import factory
-from apps.user.models import User
-from apps.user.models.choices import GenderType
+from apps.users.models import User
+from apps.users.models.choices import GenderType
 
 
 class UserFactory(factory.django.DjangoModelFactory):

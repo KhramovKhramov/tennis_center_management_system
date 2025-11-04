@@ -1,5 +1,5 @@
-from apps.user.models.choices import GenderType
-from apps.user.models.managers import UserManager
+from apps.users.models.choices import GenderType
+from apps.users.models.managers import UserManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils.functional import cached_property
