@@ -1,4 +1,4 @@
 """Модуль фабрик данных."""
 
 # ruff: noqa: F401
-from .user import UserFactory
+from .user.user import UserFactory
