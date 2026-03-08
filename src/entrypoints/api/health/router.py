@@ -16,5 +16,4 @@ router = APIRouter(prefix="/health", tags=["health"])
 )
 @inject
 async def health_check(use_case: FromDishka[HealthCheckUseCase]):
-    result = await use_case.execute()
-    return HealthCheckResponse(is_healthy=result.is_healhty)
+    return await use_case.execute()

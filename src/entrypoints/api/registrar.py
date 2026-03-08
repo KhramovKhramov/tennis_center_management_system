@@ -5,6 +5,8 @@ from fastapi import FastAPI
 from src.core.config import Settings
 from src.entrypoints.api.openapi import TAGS_METADATA
 from src.entrypoints.api.router import api_router
+from src.infra.di.health_checkers import HealthCheckersProvider
+from src.infra.di.postgres import PostgresProvider
 from src.infra.di.settings import SettingsProvider
 from src.infra.di.use_cases import UseCaseProvider
 
@@ -28,6 +30,8 @@ def create_app(settings: Settings) -> FastAPI:
     # Подключение DI
     container = make_async_container(
         SettingsProvider(settings=settings),
+        PostgresProvider(),
+        HealthCheckersProvider(),
         UseCaseProvider(),
     )
     setup_dishka(container, app)
