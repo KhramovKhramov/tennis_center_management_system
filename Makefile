@@ -36,3 +36,9 @@ mypy:
 	mypy $(packages)
 
 check: style mypy
+
+create-migration: set-container
+	docker compose exec $(c) /bin/bash -c 'alembic revision --autogenerate -m $(name)'
+
+migrations: set-container
+	docker compose exec $(c) /bin/bash -c 'alembic upgrade head'
